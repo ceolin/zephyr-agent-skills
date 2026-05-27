@@ -148,12 +148,22 @@ def check_marketplace(expected_skills: set[str]) -> list[str]:
         return [f"missing marketplace file: {MARKETPLACE_FILE}"]
 
     data = json.loads(MARKETPLACE_FILE.read_text(encoding="utf-8"))
-    plugins = data.get("plugins")
-    if not isinstance(plugins, dict):
-        return ["marketplace.json: 'plugins' must be an object"]
+    plugins_raw = data.get("plugins")
+    if not isinstance(plugins_raw, list):
+        return ["marketplace.json: 'plugins' must be an array"]
 
-    if plugins.get("zephyr-skills") != "..":
-        errors.append("marketplace.json: 'zephyr-skills' must map to '..'")
+    # Build a lookup: name -> source
+    plugins: dict[str, str] = {}
+    for entry in plugins_raw:
+        if isinstance(entry, dict) and "name" in entry:
+            plugins[entry["name"]] = entry.get("source", "")
+
+    root_entry = next(
+        (e for e in plugins_raw if isinstance(e, dict) and e.get("name") == "zephyr-skills"),
+        None,
+    )
+    if root_entry is None or root_entry.get("source") != "..":
+        errors.append("marketplace.json: 'zephyr-skills' entry must have source '..'")
 
     plugin_skill_keys = {k for k in plugins.keys() if k != "zephyr-skills"}
     missing = sorted(expected_skills - plugin_skill_keys)
@@ -165,11 +175,11 @@ def check_marketplace(expected_skills: set[str]) -> list[str]:
         errors.append(f"marketplace.json has unknown plugin entries: {', '.join(extra)}")
 
     for skill in sorted(expected_skills):
-        expected_path = f"../skills/{skill}"
+        expected_source = f"./{skill}"
         got = plugins.get(skill)
-        if got != expected_path:
+        if got != expected_source:
             errors.append(
-                f"marketplace.json: plugin '{skill}' should map to '{expected_path}', got '{got}'"
+                f"marketplace.json: plugin '{skill}' should have source '{expected_source}', got '{got}'"
             )
 
     return errors

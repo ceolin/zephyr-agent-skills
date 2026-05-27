@@ -1,28 +1,121 @@
 {
   "name": "zephyr-agent-skills",
-  "owner": "beriberikix",
-  "plugins": {
-    "zephyr-skills": "..",
-    "board-bringup": "../skills/board-bringup",
-    "build-system": "../skills/build-system",
-    "connectivity-ble": "../skills/connectivity-ble",
-    "connectivity-ip": "../skills/connectivity-ip",
-    "connectivity-usb-can": "../skills/connectivity-usb-can",
-    "devicetree": "../skills/devicetree",
-    "hardware-io": "../skills/hardware-io",
-    "industrial": "../skills/industrial",
-    "iot-protocols": "../skills/iot-protocols",
-    "kernel-basics": "../skills/kernel-basics",
-    "kernel-services": "../skills/kernel-services",
-    "multicore": "../skills/multicore",
-    "native-sim": "../skills/native-sim",
-    "power-performance": "../skills/power-performance",
-    "security-updates": "../skills/security-updates",
-    "specialized": "../skills/specialized",
-    "storage": "../skills/storage",
-    "testing-debugging": "../skills/testing-debugging",
-    "zephyr-foundations": "../skills/zephyr-foundations",
-    "zephyr-index": "../skills/zephyr-index",
-    "zephyr-module": "../skills/zephyr-module"
-  }
+  "owner": {
+    "name": "beriberikix"
+  },
+  "description": "A registry of professional, agent-ready skills for building with Zephyr RTOS",
+  "version": "1.0.0",
+  "$schema": "https://code.claude.com/schemas/marketplace.json",
+  "plugins": [
+    {
+      "name": "zephyr-skills",
+      "source": "..",
+      "description": "Zephyr RTOS development \u2014 boards and devicetree, the build system (west, Kconfig, CMake, sysbuild), drivers and peripherals, BLE and networking, the kernel, storage, power, testing and debugging, security and OTA. Use this for ANY Zephyr RTOS or embedded-firmware task on a Zephyr project; it routes you to the right specialized skill via the zephyr-cli registry."
+    },
+    {
+      "name": "board-bringup",
+      "source": "./board-bringup",
+      "description": "Custom board bringup for Zephyr RTOS using Hardware Model v2 (HWMv2). Covers directory structure, board.yml metadata, core configuration files (Kconfig, defconfig, CMake), and revision management. Trigger when creating new board definitions or porting Zephyr to custom hardware."
+    },
+    {
+      "name": "build-system",
+      "source": "./build-system",
+      "description": "Build system management for Zephyr RTOS. Covers West workspace initialization, manifest management, Sysbuild multi-image builds, Kconfig symbols, and CMake integration. Trigger when setting up workspaces, configuring builds, or troubleshooting build-time errors."
+    },
+    {
+      "name": "connectivity-ble",
+      "source": "./connectivity-ble",
+      "description": "Bluetooth Low Energy (BLE) integration for Zephyr RTOS. Covers GATT Services/Characteristics, GAP advertising, connection parameters, power optimization strategies, and the professional Send-When-Idle design pattern. Trigger when adding BLE connectivity, optimizing battery life for wireless devices, or implementing custom GATT profiles."
+    },
+    {
+      "name": "connectivity-ip",
+      "source": "./connectivity-ip",
+      "description": "IP networking fundamentals for Zephyr RTOS. Covers IoT protocol selection (LwM2M, CoAP, MQTT), IP stack configuration and trimming (IPv4/IPv6, UDP/TCP), and professional SDK integration as Zephyr modules using West manifests. Trigger when building cloud-connected applications, optimizing network memory usage, or integrating external cloud SDKs."
+    },
+    {
+      "name": "connectivity-usb-can",
+      "source": "./connectivity-usb-can",
+      "description": "USB and CAN connectivity for Zephyr RTOS. Covers USB device stack configuration (CDC ACM, HID, MSC), CAN controller integration, and professional USB-to-CAN adapter patterns including buffering and protocol packetization. Trigger when adding USB interfaces, implementing CAN bus communication, or building hardware diagnostic tools."
+    },
+    {
+      "name": "devicetree",
+      "source": "./devicetree",
+      "description": "Devicetree management for Zephyr RTOS. Covers syntax, bindings, overlays, Hardware Model v2 (HWMv2), and advanced node/property deletion patterns. Trigger when defining hardware topology, creating overlays, or mapping pins and peripherals."
+    },
+    {
+      "name": "hardware-io",
+      "source": "./hardware-io",
+      "description": "Hardware interfacing and peripheral management for Zephyr RTOS. Covers the sensor subsystem (channels, triggers, fetch/get), pin control (Pinctrl) and multiplexing, GPIO management using Devicetree specs, and SoC-level hardware configurations. Trigger when adding new hardware components, configuring pinmux, or developing sensor-based applications."
+    },
+    {
+      "name": "industrial",
+      "source": "./industrial",
+      "description": "Industrial communication protocols for Zephyr RTOS. Covers Modbus RTU (serial), Modbus TCP (Ethernet/Wi-Fi), and CANopen basics. Trigger when building factory automation controllers, industrial sensors, or medical equipment interfaces."
+    },
+    {
+      "name": "iot-protocols",
+      "source": "./iot-protocols",
+      "description": "Integration of advanced IoT protocols for Zephyr RTOS. Covers OpenThread mesh networking, Matter-over-Thread device development, Golioth Cloud SDK patterns, and LoRaWAN basics. Trigger when building smart home devices, wide-area sensor networks, or cloud-integrated hardware fleets."
+    },
+    {
+      "name": "kernel-basics",
+      "source": "./skills/kernel-basics",
+      "description": "Essential Zephyr RTOS kernel services. Covers thread lifecycle and priority, the logging subsystem for diagnostics, and the interactive shell for real-time hardware inspection and debugging. Trigger when writing application flows, adding logging to modules, or creating interactive CLI commands."
+    },
+    {
+      "name": "kernel-services",
+      "source": "./skills/kernel-services",
+      "description": "Advanced Zephyr RTOS kernel services. Covers inter-thread communication using Zbus (pub/sub), behavioral management with the State Machine Framework (SMF), background processing via work queues, and persistent configuration with the Settings subsystem. Trigger when building modular application architectures, complex state-driven logic, or requiring persistent data storage."
+    },
+    {
+      "name": "multicore",
+      "source": "./multicore",
+      "description": "Developing for multicore systems in Zephyr RTOS. Covers Symmetric Multiprocessing (SMP), Asymmetric Multiprocessing (AMP) with OpenAMP/RPMsg, inter-processor communication (IPC) patterns, and Linkable Extensions (LLEXT). Trigger when designing for SoCs with multiple homogeneous or heterogeneous cores."
+    },
+    {
+      "name": "native-sim",
+      "source": "./native-sim",
+      "description": "Host-based simulation using the Zephyr native_sim board. Covers building for Linux/macOS/Windows, automated testing, host-side debugging (GDB, Valgrind), and host-target integration. Trigger when developing application logic without hardware or setting up CI/CD tests."
+    },
+    {
+      "name": "power-performance",
+      "source": "./power-performance",
+      "description": "Power management and performance optimization for Zephyr RTOS. Covers system power states (Idle, Suspend, Off), device-level power management, residency hooks, and code/data relocation for speed efficiency. Trigger when optimizing battery life, reducing latency, or managing memory constraints."
+    },
+    {
+      "name": "security-updates",
+      "source": "./security-updates",
+      "description": "Secure boot and firmware update workflows for Zephyr RTOS. Covers MCUboot integration, production image signing, DFU protocols (MCUmgr), fail-safe rollback mechanisms, and mbedTLS crypto basics. Trigger when implementing over-the-air (OTA) updates, securing the boot process, or managing cryptographic keys."
+    },
+    {
+      "name": "specialized",
+      "source": "./specialized",
+      "description": "Specialized hardware interfaces and system reliability for Zephyr RTOS. Covers LVGL GUI development, Audio I2S/Codecs, Watchdog timers, and Fault Injection. Trigger when building human-machine interfaces (HMI), audio devices, or high-reliability mission-critical systems."
+    },
+    {
+      "name": "storage",
+      "source": "./storage",
+      "description": "Storage management for Zephyr RTOS. Covers Non-Volatile Storage (NVS) for persistent settings, flash partition management in Devicetree, and runtime flash layout access. Trigger when implementing persistent data storage, managing flash wear leveling, or configuring device partitions."
+    },
+    {
+      "name": "testing-debugging",
+      "source": "./testing-debugging",
+      "description": "Testing and debugging for Zephyr RTOS. Covers the Ztest framework for unit and integration tests, the Twister test runner for automated HIL/SIM validation, and advanced tracing/debugging techniques (SystemView, Thread Analyzer, Stack analysis). Trigger when writing unit tests, setting up CI/CD pipelines, or analyzing system performance and latency."
+    },
+    {
+      "name": "zephyr-foundations",
+      "source": "./zephyr-foundations",
+      "description": "Foundational skills for Zephyr RTOS development. Covers essential Embedded C patterns (BIT, CONTAINER_OF), real-time concurrency primitives (mutexes, semaphores, spinlocks), hardware literacy (datasheet-to-DTS mapping), and defensive programming. Trigger when writing core application logic, drivers, or troubleshooting foundational behavior."
+    },
+    {
+      "name": "zephyr-index",
+      "source": "./zephyr-index",
+      "description": "Static human-browsable catalog of the Zephyr RTOS skill set. Skill selection is handled by the zephyr-agent-skills entry point and by zephyr-cli skills suggest; this index is a reference listing only, not a task skill."
+    },
+    {
+      "name": "zephyr-module",
+      "source": "./zephyr-module",
+      "description": "Creating and integrating out-of-tree Zephyr modules. Covers module.yml configuration, Kconfig and CMake integration within a module, and West manifest inclusion. Trigger when developing reusable libraries, driver packages, or external software components for Zephyr."
+    }
+  ]
 }
